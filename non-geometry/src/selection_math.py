@@ -10,7 +10,7 @@ from typing import Union
 from prompts import math_prompt
 from collections import OrderedDict, Counter
 
-from src.selection_geometry import simple_user_assistant_merge
+from .selection_geometry import simple_user_assistant_merge
 from tool import *
 
 

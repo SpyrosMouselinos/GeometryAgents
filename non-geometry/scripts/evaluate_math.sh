@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-# Specify your EXEHOME first. EXEHOME=/home/user-name/Model-Selection-Reasoning/src
+# Specify your EXEHOME first.
 cd ${EXEHOME}
 
 # Specify the input path
