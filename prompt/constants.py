@@ -64,6 +64,63 @@ FILTERED_TOOLS = [
     "\nAngle Bisector Tool: Returns a line that splits a given angle in two equal angles. The line has as a start the point of the given angle.",
 ]
 
+VRP_PROMPT = "You are a helpful assistant that knows how to interpret geometric images and solve geometric problems. Given the image describe all the points, lines shapes and angles you can identify. Analyse the object relations and relative placement towards each other. Do not measure any distances, scales or magnitudes. Do not use arbitrary numbers. Think step-by step and return your results in bullets."
+
+INCEPTION_PROMPT = """
+You need to solve geometry problems by suggesting a series of steps.
+You know definitions, postulates, and common notions from the book Elements by Euclid.
+
+Definitions:
+A point is an entity that has no physical size or dimensions.
+A line is a geometric object that has length but no width.
+The extremities of a line are points, meaning that a line segment is defined by two points.
+A straight-line is a line that is even or continuous, with points lying on it in a straight path.
+A surface is a two-dimensional object that has both length and width.
+The extremities of a surface are lines, meaning that a surface is defined by the boundaries formed by lines.
+A plane surface is a flat surface that lies evenly with straight lines on itself.
+A plane angle is formed when two lines in a plane meet at a point, and it represents the inclination or deviation from a straight line.
+A rectilinear angle is an angle formed by straight lines.
+A right-angle is a 90-degree angle formed when two lines intersect perpendicularly.
+An obtuse angle is an angle greater than 90 degrees.
+An acute angle is an angle less than 90 degrees.
+A boundary is the outermost part of an object.
+A figure is a shape that is enclosed by boundaries.
+A circle is a specific type of figure that is defined by a single line called the circumference, with all lines radiating from a point inside the circle being equal.
+The center of a circle is the point from which all lines radiate.
+A diameter is a straight-line passing through the center of a circle and terminating at the circumference, cutting the circle in half.
+A semi-circle is half of a circle, defined by a diameter.
+Rectilinear figures are shapes defined by straight lines, including trilateral, quadrilateral, and multilateral figures.
+Trilateral figures include equilateral, isosceles, and scalene triangles.
+Right-angled, obtuse-angled, and acute-angled triangles are specific types of trilateral figures.
+Quadrilateral figures include squares, rectangles, rhombi, and rhomboids, with other quadrilateral figures referred to as trapezia.
+Parallel lines are straight lines in the same plane that, when extended infinitely in both directions, do not intersect.
+
+Postulates:
+The ability to draw a straight-line from any point to any other point.
+The ability to extend a finite straight-line continuously in a straight path.
+The ability to draw a circle with any center and radius.
+The postulate that all right-angles are equal to one another.
+The parallel postulate, which deals with the behavior of straight lines that intersect another line.
+
+Common Notions:
+The principle that if two things are equal to a third thing, they are also equal to each other.
+The principle that adding equal things to equal things results in equal wholes.
+The principle that subtracting equal things from equal things results in equal remainders.
+The principle that things that coincide or perfectly overlap are equal.
+The principle that the whole is greater than any of its parts.
+
+Each problem example has a description and a solution.
+For each problem, you must choose from the tools given in the tool list.
+
+Tool Descriptions:
+Line Tool: Creates a line between two given points.
+Circle Tool: Creates a circle with center, a given point and radius equal to the distance between the first given point and the second given point.
+Intersection Tool: Returns the point where two lines or circles or bisectors intersect. In case of circles they can intersect in one or two points.
+Perpendicular Bisector Tool: Returns a line perpendicular to the midpoint between two points.
+Perpendicular Tool: Returns a line perpendicular to a line at a given point.
+Angle Bisector Tool: Returns a line that splits a given angle in two equal angles. The line has as a start the point of the given angle.
+"""
+
 
 def get_ctt():
     return '\n'.join(COMMON_GEOMETRIC_TERMS_AND_THEOREMS)

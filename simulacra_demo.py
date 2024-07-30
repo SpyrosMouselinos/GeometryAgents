@@ -5,8 +5,8 @@ import gc
 import time
 import pandas as pd
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from .promptbuilder import few_shot_builder
-from .constants import get_nl_s_prompt, get_nl_v_prompt, get_gt_s_prompt, get_gt_v_prompt
+from prompt.promptbuilder import few_shot_builder
+from prompt.constants import get_nl_s_prompt, get_nl_v_prompt, get_gt_s_prompt, get_gt_v_prompt
 from tqdm import tqdm
 
 
@@ -460,4 +460,3 @@ def run_simulacra(llm, key=None,
 
 if __name__ == '__main__':
     print(run_simulacra('chatgpt3.5', key=''))
-

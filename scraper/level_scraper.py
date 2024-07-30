@@ -2,9 +2,9 @@ import json
 import os.path
 import requests
 import shutil
-from constants import START_PAGE, SAVE_PATH_OF_SOLVABLE_LEVELS
-from utils import SoupGetter, mkdir_p
-from time import sleep
+from constants import SAVE_PATH_OF_SOLVABLE_LEVELS
+from utils import SoupGetter
+
 if os.path.exists(SAVE_PATH_OF_SOLVABLE_LEVELS):
     with open(SAVE_PATH_OF_SOLVABLE_LEVELS, 'r') as fin:
         solvable_packs = json.load(fin)
@@ -127,7 +127,6 @@ def scrape_level(model, level, pack, get_question=True, get_steps=True, get_expl
         steps = steps.text
         entry = general_comments_h2 + '\n' + steps
 
-
         if explanation is not None and explanation in entry:
             entry = entry.replace(explanation, '')
 
@@ -140,12 +139,12 @@ def scrape_level(model, level, pack, get_question=True, get_steps=True, get_expl
     return question, tutorial, solutions, explanation
 
 
-
-model = SoupGetter(post_process_func=None)
-for pack in solvable_packs:
-    scrape_index = 0
-    max_scrape_index = len(solvable_packs[pack])
-    for level in solvable_packs[pack]:
-        print(f"Scraping {scrape_index}/{max_scrape_index} levels of pack {pack}...")
-        scrape_level(model, level, pack)
-        scrape_index += 1
+if __name__ == '__main__':
+    model = SoupGetter(post_process_func=None)
+    for pack in solvable_packs:
+        scrape_index = 0
+        max_scrape_index = len(solvable_packs[pack])
+        for level in solvable_packs[pack]:
+            print(f"Scraping {scrape_index}/{max_scrape_index} levels of pack {pack}...")
+            scrape_level(model, level, pack)
+            scrape_index += 1
